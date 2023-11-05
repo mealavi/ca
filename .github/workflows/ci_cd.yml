@@ -20,11 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Echo OS, Password, and Project Name
+      - name: project info
         run: |
           echo "OS is ${{ runner.os }}"
           echo "Password is ${{ secrets.pwd }}"
-          echo "The project name is ${{ env.PROJECT_NAME }}"
+          echo "The project name is ${{ PROJECT_NAME }}"
 
       - name: Run tests
         run: npm run test
