@@ -19,7 +19,6 @@ jobs:
 
       - name: Install dependencies
       - run: npm install
-
       - run: echo os is ${ runner.os } and password is ${secrets.pwd} and the project name is ${PROJECT_NAME}"
 
       - name: Run tests
