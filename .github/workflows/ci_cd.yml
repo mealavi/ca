@@ -18,8 +18,13 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Install dependencies
-      - run: npm install
-      - run: echo os is ${ runner.os } and password is ${secrets.pwd} and the project name is ${PROJECT_NAME}"
+        run: npm install
+
+      - name: Echo OS, Password, and Project Name
+        run: |
+          echo "OS is ${{ runner.os }}"
+          echo "Password is ${{ secrets.pwd }}"
+          echo "The project name is ${{ env.PROJECT_NAME }}"
 
       - name: Run tests
         run: npm run test
