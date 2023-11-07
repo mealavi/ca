@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import { CardComponent } from './card/card.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 const materialComponent: any[] | Type<any> = [
@@ -16,6 +17,7 @@ const materialComponent: any[] | Type<any> = [
   MatIconModule,
   MatInputModule,
   MatButtonModule,
+  MatCardModule
 ]
 
 @NgModule({
@@ -27,9 +29,9 @@ const materialComponent: any[] | Type<any> = [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    materialComponent
+    materialComponent,
   ],
-  exports: [InputComponent]
+  exports: [InputComponent, CardComponent]
 
 })
 export class ComponentModuleModule {
