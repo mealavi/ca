@@ -1,22 +1,24 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { CardModel } from './card.model';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
 })
-export class CardComponent {
-  @Input() avatar: string | undefined = 'assets/shiba_face.jpeg'
-  @Input() title: string | undefined = 'assets/shiba_face.jpeg'
-  @Input() subtitle: string | undefined = 'assets/shiba_face.jpeg'
-  @Input() imageSrc: string | undefined = 'assets/shiba_face.jpeg'
-  @Input() text: string | undefined = 'assets/shiba_face.jpeg'
-  @Input() buttonLabel: string | undefined = 'assets/shiba_face.jpeg'
-  @Input() colorButton: 'primary' | 'accent' | 'warn' = 'warn'
+export class CardComponent implements OnInit {
+  @Input() card: CardModel | undefined;
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 
-  onAction(){
-    this.action.emit();
+  ngOnInit(): void {
+    if (this.card) {
+      this.card.colorButton = this.card.colorButton || 'warn';
+      this.card.buttonDisabled = this.card.buttonDisabled || false;
+      this.card.hideButton = this.card.hideButton || false;
+    }
   }
 
+  onAction() {
+    console.log("teest")
+    this.action.emit();
+  }
 }

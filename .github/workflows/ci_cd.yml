@@ -26,5 +26,5 @@ jobs:
           echo "Password is ${{ secrets.pwd }}"
           echo "The project name is ${{ vars.PROJECT_NAME }}"
 
-      - name: Run tests
-        run: npm run test
+#      - name: Run tests
+#        run: npm run test

@@ -1,16 +1,20 @@
-<mat-card class="rounded-xl p-3 m-2" appearance="outlined">
-  <mat-card-header >
-    <div *ngIf="avatar" mat-card-avatar [style.background-image]="'url(' + avatar + ')'" style="background-size: cover"></div>
-    <mat-card-title *ngIf="title">{{title}}</mat-card-title>
-    <mat-card-subtitle *ngIf="subtitle" >{{subtitle}}</mat-card-subtitle>
-  </mat-card-header>
-  <img *ngIf="imageSrc" mat-card-image [src]=imageSrc class="rounded-xl m-2" >
-  <mat-card-content *ngIf="text">
-    <p>
-      {{text}}
-    </p>
-  </mat-card-content>
-  <mat-card-actions  align="end">
-    <button  mat-flat-button (click)="onAction()" [color]="colorButton">{{buttonLabel}}</button>
-  </mat-card-actions>
+<mat-card *ngIf="card">
+  <div mat-ripple class="rounded-xl p-3 m-2" (click)="card.hideButton? onAction(): undefined">
+    <mat-card-header>
+      <div *ngIf="card.avatar" mat-card-avatar [style.background-image]="'url(' + card.avatar + ')'"
+           style="background-size: cover"></div>
+      <mat-card-title *ngIf="card.title" class="overflow-hidden w-32 whitespace-nowrap">{{card.title}}</mat-card-title>
+      <mat-card-subtitle *ngIf="card.subtitle">{{card.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="card.imageSrc" mat-card-image [src]=card.imageSrc class="rounded-b-3xl m-2">
+    <mat-card-content *ngIf="card.text">
+      <p>
+        {{card.text}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="!card.hideButton" align="end">
+      <button mat-stroked-button (click)="onAction()" [color]="card.colorButton"
+              [disabled]="card.buttonDisabled">{{card.buttonLabel}}</button>
+    </mat-card-actions>
+  </div>
 </mat-card>
